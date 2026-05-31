@@ -1,0 +1,10 @@
+export const BG = '#1a1a2e';
+export const SURFACE = '#16213e';
+export const ACCENT = '#e94560';
+export const TEXT = '#ffffff';
+export const TEXT_DIM = '#a0aec0';
+export const GRID_BG = '#0f3460';
+export const EMPTY_CELL = '#1f3a6e';
+export const CELL_BORDER = '#2a4a8e';
+export const SELECTED_BORDER = '#ffd700';
+export const VALID_PREVIEW = 'rgba(255,255,255,0.15)';

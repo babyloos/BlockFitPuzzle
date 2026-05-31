@@ -7,4 +7,4 @@ export const GRID_BG = '#0f3460';
 export const EMPTY_CELL = '#1f3a6e';
 export const CELL_BORDER = '#2a4a8e';
 export const SELECTED_BORDER = '#ffd700';
-export const VALID_PREVIEW = 'rgba(255,255,255,0.15)';
+export const VALID_PREVIEW = 'rgba(100,200,255,0.35)';

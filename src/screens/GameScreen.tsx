@@ -14,17 +14,18 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Game'>;
 
 const PIECE_CELL = 22;
 
-export default function GameScreen({
+export default function GameScreen({ navigation }: Props) {
+  const { grid, score, best, pieces, selectedPiece, isOver, start, selectPiece, place } = useGameStore();
+
+  const levelsSinceAd = useRef(0);
+  const prevLose = useRef(false);
 
   useEffect(() => { loadInterstitial(); }, []);
-
-  const previsOver = useRef(false);
   useEffect(() => {
-    const cur = useGameStore.getState().isOver;
-    if (cur && !previsOver.current) playSound('error');
-    previsOver.current = cur;
-  }); navigation }: Props) {
-  const { grid, score, best, pieces, selectedPiece, isOver, start, selectPiece, place } = useGameStore();
+    if (isOver && !prevLose.current) playSound('error');
+    prevLose.current = isOver;
+  }, [isOver]);
+
 
   return (
     <SafeAreaView style={styles.container}>

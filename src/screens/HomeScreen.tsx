@@ -5,6 +5,10 @@ import { ACCENT, BG, TEXT, TEXT_DIM } from '../constants/theme';
 import t from '../constants/i18n';
 import { BLOCK_COLORS } from '../game/blocks';
 import type { RootStackParamList } from '../../App';
+import { BannerAd, BannerAdSize } from 'react-native-google-mobile-ads';
+import { BANNER_AD_UNIT_ID } from '../utils/ads';
+import { useEffect } from 'react';
+import { initSounds } from '../utils/sounds';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -17,8 +21,8 @@ const PREVIEW_GRID = [
   [0, 0, 0, 4, 4, 0],
 ];
 
-export default function HomeScreen({
-  useEffect(() => { initSounds(); }, []); navigation }: Props) {
+export default function HomeScreen({ navigation }: Props) {
+  useEffect(() => { initSounds(); }, []);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.inner}>
@@ -45,8 +49,8 @@ export default function HomeScreen({
         <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Game')}>
           <Text style={styles.btnText}>{t('play')}</Text>
         </TouchableOpacity>
-      <BannerAd unitId={BANNER_AD_UNIT_ID} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} />
       </View>
+      <BannerAd unitId={BANNER_AD_UNIT_ID} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} />
     </SafeAreaView>
   );
 }

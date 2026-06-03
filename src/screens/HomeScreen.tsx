@@ -17,7 +17,8 @@ const PREVIEW_GRID = [
   [0, 0, 0, 4, 4, 0],
 ];
 
-export default function HomeScreen({ navigation }: Props) {
+export default function HomeScreen({
+  useEffect(() => { initSounds(); }, []); navigation }: Props) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.inner}>
@@ -44,6 +45,7 @@ export default function HomeScreen({ navigation }: Props) {
         <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Game')}>
           <Text style={styles.btnText}>{t('play')}</Text>
         </TouchableOpacity>
+      <BannerAd unitId={BANNER_AD_UNIT_ID} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} />
       </View>
     </SafeAreaView>
   );

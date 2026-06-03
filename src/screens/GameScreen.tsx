@@ -6,13 +6,24 @@ import GameGrid from '../components/GameGrid';
 import { ACCENT, BG, SURFACE, TEXT, TEXT_DIM } from '../constants/theme';
 import t from '../constants/i18n';
 import { useGameStore } from '../store/gameStore';
+import { playSound } from '../utils/sounds';
+import { loadInterstitial, showInterstitialIfReady } from '../utils/ads';
 import type { RootStackParamList } from '../../App';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Game'>;
 
 const PIECE_CELL = 22;
 
-export default function GameScreen({ navigation }: Props) {
+export default function GameScreen({
+
+  useEffect(() => { loadInterstitial(); }, []);
+
+  const previsOver = useRef(false);
+  useEffect(() => {
+    const cur = useGameStore.getState().isOver;
+    if (cur && !previsOver.current) playSound('error');
+    previsOver.current = cur;
+  }); navigation }: Props) {
   const { grid, score, best, pieces, selectedPiece, isOver, start, selectPiece, place } = useGameStore();
 
   return (
